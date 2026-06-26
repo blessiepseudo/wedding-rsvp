@@ -1,18 +1,34 @@
 const API =
-"https://script.google.com/macros/s/AKfycbwpa9vobsrnv87gOmywYG_jG2_BSZuJvoG-PxZdXrmaXTXJJa9iULzcNy2b5MbUFgsx/exec";
+"PASTE_YOUR_GOOGLE_SCRIPT_URL_HERE";
 
-let selectedSeats=0;
+
+let selectedSeats = 0;
+let guestSelected = false;
+
 
 
 function searchGuest(){
 
+
 let query =
-document.getElementById("name").value;
+document.getElementById("name").value.trim();
+
+
+guestSelected = false;
+document.getElementById("selectedGuest").value="";
+
+
+let box =
+document.getElementById("suggestions");
+
+
+box.innerHTML="";
 
 
 if(query.length < 2){
 return;
 }
+
 
 
 fetch(API,{
@@ -34,13 +50,6 @@ query:query
 .then(data=>{
 
 
-let box =
-document.getElementById("suggestions");
-
-
-box.innerHTML="";
-
-
 data.forEach(g=>{
 
 
@@ -51,14 +60,19 @@ document.createElement("div");
 div.className="suggestion";
 
 
-div.innerHTML=g.name;
+div.innerHTML =
+g.name;
+
 
 
 div.onclick=function(){
 
+
 selectGuest(g);
 
+
 };
+
 
 
 box.appendChild(div);
@@ -74,13 +88,25 @@ box.appendChild(div);
 
 
 
+
+
 function selectGuest(g){
 
 
-document.getElementById("name").value=g.name;
+document.getElementById("name").value =
+g.name;
 
 
-selectedSeats=g.seats;
+document.getElementById("selectedGuest").value =
+g.name;
+
+
+selectedSeats =
+g.seats;
+
+
+guestSelected = true;
+
 
 
 document.getElementById("guestInfo")
@@ -96,11 +122,29 @@ document.getElementById("suggestions")
 
 
 
+
+
+
 function submitRSVP(){
 
 
+if(!guestSelected){
+
+
+alert(
+"Please select your name from the guest list."
+);
+
+
+return;
+
+
+}
+
+
+
 let name =
-document.getElementById("name").value;
+document.getElementById("selectedGuest").value;
 
 
 let rsvp =
@@ -112,13 +156,14 @@ document.getElementById("requests").value;
 
 
 
-if(!name || !rsvp){
+if(!rsvp){
 
-alert("Complete the form");
+alert("Please select RSVP status");
 
 return;
 
 }
+
 
 
 
@@ -150,19 +195,24 @@ requests:requests
 
 if(result.status==="duplicate"){
 
+
 document.getElementById("message")
 .innerHTML =
-"Already submitted.";
+"RSVP already submitted.";
+
 
 }
 
 else{
 
+
 document.getElementById("message")
 .innerHTML =
 "Thank you! RSVP saved.";
 
+
 }
+
 
 
 });
