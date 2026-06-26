@@ -92,7 +92,6 @@ box.appendChild(div);
 
 function selectGuest(g){
 
-
 document.getElementById("name").value =
 g.name;
 
@@ -108,12 +107,12 @@ g.seats;
 guestSelected = true;
 
 
-
 document.getElementById("guestInfo")
 .innerHTML =
 "Reserved Seats: "+g.seats;
 
 
+// hide dropdown
 document.getElementById("suggestions")
 .innerHTML="";
 
