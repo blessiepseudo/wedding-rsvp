@@ -50,7 +50,7 @@ query:query
 .then(data=>{
 
 
-data.forEach(g=>{
+data.slice(0,5).forEach(g=>{
 
 
 let div =
