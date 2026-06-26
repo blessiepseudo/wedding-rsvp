@@ -1,1 +1,78 @@
+<!DOCTYPE html>
+<html>
 
+<head>
+
+<meta charset="UTF-8">
+
+<title>Wedding RSVP</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+
+<div class="card">
+
+
+<h1>Wedding RSVP</h1>
+
+<p>Please confirm your attendance</p>
+
+
+<input 
+id="name"
+placeholder="Type your name"
+onkeyup="searchGuest()"
+>
+
+
+<div id="suggestions"></div>
+
+
+<div id="guestInfo"></div>
+
+
+<select id="rsvp">
+
+<option value="">
+Select RSVP
+</option>
+
+<option value="Accepted">
+Joyfully Accept
+</option>
+
+<option value="Declined">
+Regretfully Decline
+</option>
+
+</select>
+
+
+<textarea
+id="requests"
+placeholder="Special requests (optional)">
+</textarea>
+
+
+<button onclick="submitRSVP()">
+Submit RSVP
+</button>
+
+
+<p id="message"></p>
+
+
+</div>
+
+
+<script src="script.js"></script>
+
+
+</body>
+
+</html>
