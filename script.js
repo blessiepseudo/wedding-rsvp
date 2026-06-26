@@ -1,5 +1,5 @@
 const API =
-"PASTE_YOUR_GOOGLE_SCRIPT_URL_HERE";
+"https://script.google.com/macros/s/AKfycbwpa9vobsrnv87gOmywYG_jG2_BSZuJvoG-PxZdXrmaXTXJJa9iULzcNy2b5MbUFgsx/exec";
 
 
 let selectedSeats = 0;
