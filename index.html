@@ -25,9 +25,12 @@
 
 <input 
 id="name"
-placeholder="Type your name"
-onkeyup="searchGuest()"
+placeholder="Search your name"
+oninput="searchGuest()"
+autocomplete="off"
 >
+
+<input type="hidden" id="selectedGuest">
 
 
 <div id="suggestions"></div>
